@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      genrator|infoGeneratorBuilder:
+        enabled: True
+        generate_for:
+          - lib/src/*

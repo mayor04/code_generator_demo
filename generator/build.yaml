@@ -1,0 +1,16 @@
+builders:
+  infoGeneratorBuilder:
+    import: 'package:generator/generator.dart'
+    builder_factories: ['infoGeneratorBuilder']
+    auto_apply: dependents
+    build_extensions: {'.dart': ['.info.dart']}
+    build_to: cache
+    applies_builders: ['source_gen|combining_builder']
+
+  classDataGeneratorBuilder:
+    import: 'package:generator/generator.dart'
+    builder_factories: ['classDataGeneratorBuilder']
+    auto_apply: dependents
+    build_extensions: {'.dart': ['.class.dart']}
+    build_to: cache
+    applies_builders: ['source_gen|combining_builder']
