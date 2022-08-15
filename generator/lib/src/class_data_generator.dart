@@ -8,18 +8,15 @@ class ClassDataGenerator extends Generator {
   FutureOr<String?> generate(LibraryReader library, BuildStep buildStep) {
     final buffer = StringBuffer();
 
-    for (var _class in library.classes) {
-      final name = _class.displayName;
-      // extension $Pet on Pet{
-      //    String details() => 'Pet{name: $name, age: $age, owner: $owner}';
-      // }
+    for (var classData in library.classes) {
+      final name = classData.displayName;
 
       buffer.writeln('extension \$$name on $name{');
 
-      if (_class.fields.isNotEmpty) {
+      if (classData.fields.isNotEmpty) {
         buffer.write('String details() => ');
 
-        final fieldWithValues = _class.fields.map((e) => '${e.name}: \$${e.name}');
+        final fieldWithValues = classData.fields.map((e) => '${e.name}: \$${e.name}');
         buffer.write("'$name{${fieldWithValues.join(', ')}}';");
       }
 
